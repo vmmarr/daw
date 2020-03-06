@@ -1,0 +1,58 @@
+sudo nano /etc/netplan 
+
+sudo apt install bind9
+
+sudo apt install apache2
+
+sudo mkdir /var/www/aula
+touch error.log
+touch access.log
+sudo nano index.html
+
+sudo mkdir /var/www/mdmvazquez
+touch error.log
+touch access.log
+sudo nano index.html
+
+sudo a2enmod speling
+sudo a2enmod auth_basic
+sudo a2enmod auth_digest
+
+sudo nano /etc/apache2/mod-ava/speling.conf
+
+<IfModule spelling.c>
+	CheckCaseOnly On
+	CheckSpelling On
+</IfModule>
+
+ln -s /etc/apache2/mod-ava/speling.conf /etc/apache2/mod-ena/
+
+sudo nano /etc/bind/name.conf.local
+zone "mdmvazquez.net" {
+	type Master
+	
+}
+
+zone "aula.net" {
+
+}
+
+sudo cp db.local.conf db.mdmvazquez.conf
+sudo cp db.local.conf db.aula.conf
+
+
+
+sudo nano /etc/apache2/sites-ava/mdmvazquez.net.conf
+sudo nano /etc/apache2/sites-ava/aula.net.conf
+
+DirectoryIndex index.html
+ErrorDocument
+Redired ""
+Require
+AuthType
+AuthName
+
+
+
+
+
